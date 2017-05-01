@@ -33,6 +33,7 @@ def listening_thread():
         data = receive_data(s, client_socket)
         if data == "\q":
             print_message("[The other person has logged off. Enter '\q' to end this chat.]")
+            s.close()
             return
         else:
             print "Received: " + data
