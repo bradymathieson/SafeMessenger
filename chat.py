@@ -3,13 +3,6 @@ from debug import *
 from socketing import *
 import params
 
-'''
-Potential reaches:
-- cryptography
-- message security (header messages)
-- group chat!
-'''
-
 def main():
     print_message("[Enter port number]")
     params.PORT = int(raw_input())
