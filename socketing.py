@@ -26,22 +26,35 @@ def listening_thread():
     s = create_socket()
     bind_socket(s)
 
-    conn = begin_accepting_connections(s)
-    receive_data(s, conn)
-    # while 1:
-    #     receive_data(s, conn)
+    s.listen(1)
+
+    while True:
+        client_socket = begin_accepting_connections(s)
+        data = receive_data(s, client_socket)
+        if data == "\q":
+            print_message("[The other person has logged off. Enter '\q' to end this chat.]")
+            return
+        else:
+            print "Received: " + data
+
+        client_socket.close()
 
 def sending_thread():
     print_message_debug("Entered sending thread")
 
-    s = create_socket()
-    connect_to_socket(s)
+    while True:
+        x = raw_input()
+        s = create_socket()
+        connect_to_socket(s)
+        if sys.getsizeof(x) <= params.MAX_SEND_SIZE:
+            s.sendall(x)
+        else:
+            print_message("Message too long, cannot send")
 
-    x = raw_input()
-    if sys.getsizeof(x) <= params.MAX_SEND_SIZE:
-        s.sendall(x)
-    else:
-        print_message("Message too long, cannot send")
+        s.close()
+
+        if x == '\q':
+            return
 
 def create_socket():
     # Initialize socket using AF_INET, SOCK_STREAM (TCP) protocol
@@ -71,7 +84,6 @@ def connect_to_socket(s):
         sys.exit()
 
 def begin_accepting_connections(s):
-    s.listen(1)
 
     # Blocks until we have established a connection
     conn, addr = s.accept()
@@ -83,4 +95,4 @@ def receive_data(s, conn):
 
     # Max recv size is params.MAX_SEND_SIZE bytes (but remember sockets... could be more, could be less!)
     data = conn.recv(params.MAX_SEND_SIZE)
-    print_message("Received: " + data)
+    return data

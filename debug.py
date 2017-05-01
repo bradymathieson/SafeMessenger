@@ -4,7 +4,7 @@ import threading
 PRINT_LOCK = threading.Lock()
 
 # Debug mode
-debug = True
+debug = False
 
 def print_message(msg):
     PRINT_LOCK.acquire()
