@@ -67,6 +67,13 @@ def create_socket():
         print_message('Failed to create socket. Error code: ' + str(msg[0]) + ' , Error message : ' + msg[1])
         sys.exit()
 
+def get_local_ip_address():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(("8.8.8.8", 80))
+    ip = s.getsockname()[0]
+    s.close()
+    return ip
+
 def bind_socket(s):
     # Bind socket to a particular hostname/port number
     try:
