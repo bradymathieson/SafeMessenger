@@ -22,7 +22,7 @@ In future versions, I will be working on:
 - a web client to direct traffic to one unified IP address and allow communication between two users on different computers. This server will be run on Heroku and need error checks to make sure not to confuse messages when multiple chats are happening simultaneously (a method to make sure ports are taken by two clients at the same time).
 - a more elegant way to end chats between two users.
 - a clearer description of project requirements (still haven't figured out what students' responsibilities would be)
-- reaches! (right now, thinking cryptography over the network, group chat, or safer communication with cleartext headers)
+- reaches! (right now, thinking cryptography over the network, group chat, web interface, or safer communication with cleartext headers)
 
 ## Giving Credit Where Credit Is Due
-This is a clear example of how EECS 482 (Introduction to Operating Systems) and 485 (Web Systems) have shaped me as a programmer. Eternally grateful for the staff and professors from both of these respective courses (in particular, Jason Flinn of 482 and Andrew DeOrio/Hosagrahar Jagadish of 485).
+This is a clear example of how EECS 482 (Introduction to Operating Systems) and 485 (Web Systems) at the University of Michigan have shaped me as a programmer. Eternally grateful for the staff and professors from both of these respective courses (in particular, Jason Flinn of 482 and Andrew DeOrio/Hosagrahar Jagadish of 485).
